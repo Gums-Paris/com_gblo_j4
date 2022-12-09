@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_CREATED_BY" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_CREATED_BY" hidden="true" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_MODIFIED_BY" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_MODIFIED_BY" hidden="true" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_MODIFIED_BY"/>
+    <field name="parking" filter="safehtml" type="text" required="true" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_PARKING" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_PARKING" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_PARKING"/>
+    <field name="latpk" filter="safehtml" type="text" required="true" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LATPK" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_LATPK" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LATPK"/>
+    <field name="lonpk" filter="safehtml" type="text" required="true" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LONPK" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_LONPK" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LONPK"/>
+    <field name="rendezvous" filter="safehtml" type="text" required="true" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_RENDEZVOUS" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_RENDEZVOUS" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_RENDEZVOUS"/>
+    <field name="latrv" filter="safehtml" type="text" required="true" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LATRV" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_LATRV" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LATRV"/>
+    <field name="lonrv" filter="safehtml" type="text" required="true" label="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LONRV" description="COM_GBLO_FORM_DESC_INFOS_SORTIE_BLO_LONRV" hint="COM_GBLO_FORM_LBL_INFOS_SORTIE_BLO_LONRV"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

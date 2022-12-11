@@ -9,6 +9,8 @@
 
 defined('JPATH_BASE') or die;
 
+use \Joomla\CMS\Factory;
+
 jimport('joomla.form.formfield');
 
 /**
@@ -37,7 +39,7 @@ class JFormFieldModifiedby extends \Joomla\CMS\Form\FormField
 	{
 		// Initialize variables.
 		$html   = array();
-		$user   = JFactory::getUser();
+		$user   = Factory::getUser();
 		$html[] = '<input type="hidden" name="' . $this->name . '" value="' . $user->id . '" />';
 
 		if (!$this->hidden)

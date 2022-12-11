@@ -6,16 +6,18 @@
  * @copyright  2019 Pastre
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
-
+ 
 // No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modeladmin');
+//jimport('joomla.application.component.modeladmin');
 
 use \Joomla\CMS\Table\Table;
 use \Joomla\CMS\Factory;
 use \Joomla\CMS\Language\Text;
 use \Joomla\CMS\Plugin\PluginHelper;
+use \Joomla\CMS\Helper\TagsHelper;
+use \Joomla\CMS\Filter\OutputFilter;
 
 /**
  * Gblo model.
@@ -231,6 +233,7 @@ class GbloModelInfos_sortie_blo extends \Joomla\CMS\MVC\Model\AdminModel
 			if (@$table->ordering === '')
 			{
 				$db = Factory::getDbo();
+				$db->getQuery(true);
 				$db->setQuery('SELECT MAX(ordering) FROM #__gblo_');
 				$max             = $db->loadResult();
 				$table->ordering = $max + 1;

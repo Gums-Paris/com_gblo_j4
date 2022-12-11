@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die;
 
+use \Joomla\CMS\Factory;
 
 class GbloViewListesorties extends JViewLegacy
 {
@@ -21,18 +22,25 @@ class GbloViewListesorties extends JViewLegacy
 	public function display($tpl = null)	{
 
 		$liste = array();
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		if (empty( $_data )){
-			$query = "SELECT title, id FROM `#__content` WHERE catid=59 AND state>0 ORDER BY title";
+			$query = $db->getQuery(true);
+//			$query = "SELECT title, id FROM `#__content` WHERE catid=59 AND state>0 ORDER BY title";
+			$query
+				->select($db->qn(array('title', 'id')))
+				->from($db->qn('#__content'))
+				->where($db->qn('catid') . '=' . $db->q('59'))
+				->where($db->qn('state') . '>' . $db->q('0'))
+				->order($db->qn('title')); 
+				
 			$db->setQuery($query);
 			$liste = $db->loadRowList();
 			if(empty($liste)){
 				$_data = (object) ['flag' => '1'];
 				echo json_encode($_data);
 			}
-		} 
-//		$_data = (object) ['flag' => '0'];
-//		$_data->liste = $liste;
+		}
+		 
 		$_data = (object) ['liste' => $liste];
 
 //echo "<pre>"; print_r($_data); echo" </pre>";

@@ -20,9 +20,6 @@ if (!Factory::getUser()->authorise('core.manage', 'com_gblo'))
 	throw new Exception(Text::_('JERROR_ALERTNOAUTHOR'));
 }
 
-// Include dependancies
-jimport('joomla.application.component.controller');
-
 JLoader::registerPrefix('Gblo', JPATH_COMPONENT_ADMINISTRATOR);
 JLoader::register('GbloHelper', JPATH_COMPONENT_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'gblo.php');
 

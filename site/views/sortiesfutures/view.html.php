@@ -6,6 +6,8 @@
 // No direct access
 defined('_JEXEC') or die;
 
+use \Joomla\CMS\Factory;
+
 jimport('joomla.application.component.view');
 
 class GbloViewSortiesfutures extends JViewLegacy
@@ -16,7 +18,7 @@ class GbloViewSortiesfutures extends JViewLegacy
 
 	function display($tpl = null)
 	{
-		$app		= JFactory::getApplication();
+		$app		= Factory::getApplication();
 		$params		= $app->getParams();
 
 		// Get some data from the models
@@ -24,27 +26,7 @@ class GbloViewSortiesfutures extends JViewLegacy
 		$items		= $this->get('Items');
 		$pagination	= $this->get('Pagination');
 
-		// Check for errors.
-/*		if (count($errors = $this->get('Errors'))) {
-			throw new Exception(implode("\n", $errors), 500);
-		} */
-
-		$document       = JFactory::getDocument();
- /*               $document->setTitle( $params->get( 'page_title' ));
-                $document->addStyleSheet('components/com_abook/assets/css/style.css');
-
-		// Prepare the data.
-		// Compute the item slug.
-		for ($i = 0, $n = count($items); $i < $n; $i++)
-		{
-			$item		= &$items[$i];
-			$item->slug	= $item->alias ? ($item->id.':'.$item->alias) : $item->id;
-		} */
-
-/*		$this->assignRef('state',		$state);
-		$this->assignRef('items',		$items);
-		$this->assignRef('params',		$params);
-		$this->assignRef('pagination',	$pagination);*/
+		$document  = Factory::getDocument();
 
 		$this->_prepareDocument();
 
@@ -56,7 +38,7 @@ class GbloViewSortiesfutures extends JViewLegacy
 	 */
 	protected function _prepareDocument()
 	{
-		$app		= JFactory::getApplication();
+		$app		= Factory::getApplication();
 		$menus		= $app->getMenu();
 		$pathway	= $app->getPathway();
 		$title 		= null;

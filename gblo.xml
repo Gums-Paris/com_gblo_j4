@@ -7,8 +7,9 @@
     <author>Pastre</author>
     <authorEmail>claude.pastre@free.fr</authorEmail>
     <authorUrl>http://</authorUrl>
-    <version>CVS: 1.1.1</version>
+    <version>CVS: 2.0.0</version>
     <description>Guidage vers la prochaine sortie</description>
+    <namespace path="src">Gumsparis\Component\Gblo</namespace>
     
     
     

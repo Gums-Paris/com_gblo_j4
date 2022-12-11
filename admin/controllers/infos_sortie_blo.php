@@ -10,7 +10,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controllerform');
+//jimport('joomla.application.component.controllerform');
 
 /**
  * Infos_sortie_blo controller class.

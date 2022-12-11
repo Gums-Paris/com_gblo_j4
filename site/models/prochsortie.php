@@ -3,6 +3,8 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 
+use \Joomla\CMS\Factory;
+
 /**
  * Gblo Model production des données de la prochaine sortie
  *
@@ -25,9 +27,9 @@ class GbloModelProchsortie extends JModelLegacy{
 	 */
 	function getData(){
   
-        $app  = JFactory::getApplication();
+        $app  = Factory::getApplication();
 		$articleId = $app->input->getInt('idarticle');
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$sortieChoisie = false;
 
 		if (!($articleId == null)) {
@@ -42,8 +44,18 @@ class GbloModelProchsortie extends JModelLegacy{
 		}else{
 // cas du fonctionement automatique sur la sortie de la semaine, on récupère les infos de l'évènement
 			if (empty( $this->_data )){
-				$query = "SELECT title, dates, introtext FROM `#__jem_events`
-				WHERE (dates > curdate()-1) AND (published = 1) AND introtext like '<p>{article%' ORDER BY dates LIMIT 0 , 1";
+				$query = $db->getQuery(true);
+		/*		$query = "SELECT title, dates, introtext FROM `#__jem_events`
+				WHERE (dates > curdate()-1) AND (published = 1) AND introtext like '<p>{article%' ORDER BY dates LIMIT 0 , 1"; */
+				$query 
+					->select($db->qn(array('title', 'dates', 'introtext')))
+					->from($db->qn('#__jem_events'))
+					->where($db->qn('dates') . '> curdate()' . '-' . $db->q('1'))
+					->where($db->qn('published') . '=' . $db->q('1'))
+					->where($db->qn('introtext') . 'LIKE' . $db->q('<p>{article%'))
+					->order($db->qn('dates'))
+					->setLimit($db->q('1'));  
+ 		
 				$db->setQuery($query);
 				$this->_data = $db->loadObject();
 				if(empty($this->_data)){
@@ -62,7 +74,13 @@ class GbloModelProchsortie extends JModelLegacy{
 		}		
 
 // récupère l'article et extrait les infos en traitant le texte
-		$query = "SELECT title,introtext FROM `#__content` WHERE id=". (int) $articleId;
+		$query = $db->getQuery(true);
+
+		$query
+			->select($db->qn(array('title', 'introtext')))
+			->from($db->qn('#__content'))
+			->where($db->qn('id') . '=' . (int) $articleId);
+			
 		$db->setQuery($query); 
 		$result = $db->loadAssoc();
 		if (empty($result)) { 

@@ -3,6 +3,8 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 
+use \Joomla\CMS\Factory;
+
 /**
  * Gblo Model production des données de la prochaine sortie
  *
@@ -25,14 +27,25 @@ class GbloModelSortiesfutures extends JModelLegacy{
 	 */
 	function getData(){
   
-        $app  = JFactory::getApplication();
-		$db = JFactory::getDBO();
+        $app  = Factory::getApplication();
+		$db = Factory::getDBO();
 		
 // on récupère un array d'objets (les 5 prochaines sorties)
 		if (empty( $this->_data )){
-			$query = "SELECT title, dates, introtext FROM `#__jem_events`
-			WHERE (dates > curdate()-1) AND (published = 1) AND introtext like '<p>{article%' ORDER BY dates LIMIT 0, 5";
+			$query = $db->getQuery(true);
+//			$query = "SELECT title, dates, introtext FROM `#__jem_events`
+//			WHERE (dates > curdate()-1) AND (published = 1) AND introtext like '<p>{article%' ORDER BY dates LIMIT 0, 5";
+			$query 
+				->select($db->qn(array('title', 'dates', 'introtext')))
+				->from($db->qn('#__jem_events'))
+				->where($db->qn('dates') . '> curdate()' . '-' . $db->q('1'))
+				->where($db->qn('published') . '=' . $db->q('1'))
+				->where($db->qn('introtext') . 'LIKE' . $db->q('<p>{article%'))
+				->order($db->qn('dates'))
+				->setLimit('5');
+				
 			$db->setQuery($query);
+			
 			$this->liste = $db->loadObjectList();
 			if(empty($this->liste)){
 				$this->_data = (object) ['flag' => '1'];

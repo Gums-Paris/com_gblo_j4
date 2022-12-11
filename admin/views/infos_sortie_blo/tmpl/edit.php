@@ -17,8 +17,8 @@ use \Joomla\CMS\Language\Text;
 
 
 HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-HTMLHelper::_('behavior.tooltip');
-HTMLHelper::_('behavior.formvalidation');
+HTMLHelper::_('bootstrap.tooltip');
+HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('formbehavior.chosen', 'select');
 HTMLHelper::_('behavior.keepalive');
 
@@ -36,7 +36,8 @@ $document->addStyleSheet(Uri::root() . 'media/com_gblo/css/form.css');
 		if (task == 'infos_sortie_blo.cancel') {
 			Joomla.submitform(task, document.getElementById('infos_sortie_blo-form'));
 		}
-		else {
+		else { 
+			document.getElementById("infos_sortie_blo-form".innerHTML = task;
 			
 			if (task != 'infos_sortie_blo.cancel' && document.formvalidator.isValid(document.id('infos_sortie_blo-form'))) {
 				

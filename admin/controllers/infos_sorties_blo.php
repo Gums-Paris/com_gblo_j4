@@ -10,7 +10,7 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controlleradmin');
+//jimport('joomla.application.component.controlleradmin');
 
 use \Joomla\Utilities\ArrayHelper;
 use \Joomla\CMS\Session\session;

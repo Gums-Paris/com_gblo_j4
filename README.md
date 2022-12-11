@@ -15,4 +15,6 @@ Mis à part les points d'entrée du composant (gblo.php et controller.php) les s
 /site/models/sortiesfutures.php
 
 
-La version actuelle est 1.1.1
+La version destinée à Joomla 4 est au départ 2.0.0
+
+

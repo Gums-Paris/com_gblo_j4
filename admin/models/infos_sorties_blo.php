@@ -9,7 +9,9 @@
  */
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modellist');
+//jimport('joomla.application.component.modellist');
+JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/helpers/fields.php');        
+//use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 
 /**
  * Methods supporting a list of Gblo records.
@@ -71,7 +73,7 @@ class GbloModelInfos_sorties_blo extends \Joomla\CMS\MVC\Model\ListModel
         // List state information.
         parent::populateState("a.id", "ASC");
 
-        $context = $this->getUserStateFromRequest($this->context . '.context', 'context', 'com_content.article', 'CMD');
+		$context = $this->getUserStateFromRequest($this->context . '.context', 'context', 'com_content.article', 'CMD');
         $this->setState('filter.context', $context);
 
         // Split context into component and optional section

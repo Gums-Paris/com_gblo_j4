@@ -15,6 +15,7 @@ use \Joomla\CMS\Factory;
 use \Joomla\CMS\Access\Access;
 use \Joomla\CMS\Language\Text;
 use \Joomla\CMS\Table\Table;
+use \Joomla\Database\DatabaseDriver;
 
 /**
  * infos_sortie_blo Table class
@@ -29,9 +30,9 @@ class GbloTableinfos_sortie_blo extends \Joomla\CMS\Table\Table
 	 *
 	 * @param   JDatabase  &$db  A database connector object
 	 */
-	public function __construct(&$db)
+	public function __construct(DatabaseDriver $db)
 	{
-		JObserverMapper::addObserverClassToClass('JTableObserverContenthistory', 'GbloTableinfos_sortie_blo', array('typeAlias' => 'com_gblo.infos_sortie_blo'));
+//		JObserverMapper::addObserverClassToClass('JTableObserverContenthistory', 'GbloTableinfos_sortie_blo', array('typeAlias' => 'com_gblo.infos_sortie_blo'));
 		parent::__construct('#__gblo_', 'id', $db);
         $this->setColumnAlias('published', 'state');
     }
@@ -215,6 +216,7 @@ class GbloTableinfos_sortie_blo extends \Joomla\CMS\Table\Table
 		}
 
 		// Update the publishing state for rows with the given primary keys.
+		$this-> db->getQuery(true);
 		$this->_db->setQuery(
 			'UPDATE `' . $this->_tbl . '`' .
 			' SET `state` = ' . (int) $state .

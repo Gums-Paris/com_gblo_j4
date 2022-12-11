@@ -10,7 +10,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
+//jimport('joomla.application.component.view');
 
 use \Joomla\CMS\Factory;
 use \Joomla\CMS\Language\Text;

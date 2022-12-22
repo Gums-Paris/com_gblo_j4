@@ -10,7 +10,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-JLoader::registerPrefix('Gblo', JPATH_SITE . '/components/com_gblo/');
+//JLoader::registerPrefix('Gblo', JPATH_SITE . '/components/com_gblo/');
 
 /**
  * Class GbloRouter

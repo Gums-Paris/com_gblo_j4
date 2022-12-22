@@ -20,8 +20,8 @@ if (!Factory::getUser()->authorise('core.manage', 'com_gblo'))
 	throw new Exception(Text::_('JERROR_ALERTNOAUTHOR'));
 }
 
-JLoader::registerPrefix('Gblo', JPATH_COMPONENT_ADMINISTRATOR);
-JLoader::register('GbloHelper', JPATH_COMPONENT_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'gblo.php');
+//JLoader::registerPrefix('Gblo', JPATH_COMPONENT_ADMINISTRATOR);
+//JLoader::register('GbloHelper', JPATH_COMPONENT_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'gblo.php');
 
 $controller = BaseController::getInstance('Gblo');
 $controller->execute(Factory::getApplication()->input->get('task'));

@@ -15,8 +15,8 @@ use \Joomla\CMS\MVC\Controller\BaseController;
 // Include dependancies
 //jimport('joomla.application.component.controller');
 
-JLoader::registerPrefix('Gblo', JPATH_COMPONENT);
-JLoader::register('GbloController', JPATH_COMPONENT . '/controller.php');
+//JLoader::registerPrefix('Gblo', JPATH_COMPONENT);
+//JLoader::register('GbloController', JPATH_COMPONENT . '/controller.php');
 
 
 // Execute the task.
